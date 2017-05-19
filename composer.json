@@ -1,0 +1,25 @@
+{
+    "name": "easemob/tickets",
+    "description": "环信工单系统",
+    "type": "project",
+    "require": {
+        "symfony/routing": "~3.2",
+        "symfony/http-foundation": "~3.2",
+        "symfony/config": "~3.2",
+        "symfony/serializer": "~3.2",
+        "psr/log": "~1.0",
+        "doctrine/orm": "~2.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "EasemobTickets\\": "src/"
+        }
+    },
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.phpcomposer.com"
+        }
+    },
+    "license": "proprietary"
+}
