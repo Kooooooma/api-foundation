@@ -1,10 +1,10 @@
 <?php
 
-namespace EasemobTickets\Controller;
+namespace ApiFoundation\Controller;
 
-use EasemobTickets\Controller;
-use EasemobTickets\Model\Product;
-use EasemobTickets\Model\Category;
+use ApiFoundation\Controller;
+use ApiFoundation\Model\Product;
+use ApiFoundation\Model\Category;
 
 class TicketController extends Controller
 {
@@ -12,6 +12,6 @@ class TicketController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        
+        $this->responseJson(200, "OK");
     }
 }

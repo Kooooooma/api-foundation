@@ -1,6 +1,6 @@
 <?php
 
-namespace EasemobTickets;
+namespace ApiFoundation;
 
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\Matcher\UrlMatcher;

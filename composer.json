@@ -1,5 +1,5 @@
 {
-    "name": "easemob/tickets",
+    "name": "api-foundation/api-foundation",
     "description": "环信工单系统",
     "type": "project",
     "require": {
@@ -13,7 +13,7 @@
     },
     "autoload": {
         "psr-4": {
-            "EasemobTickets\\": "src/"
+            "ApiFoundation\\": "src/"
         }
     },
     "repositories": {

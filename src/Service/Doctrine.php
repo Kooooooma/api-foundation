@@ -1,6 +1,6 @@
 <?php
 
-namespace EasemobTickets\Service;
+namespace ApiFoundation\Service;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\Setup;

@@ -1,6 +1,6 @@
 <?php
 
-namespace EasemobTickets\Model;
+namespace ApiFoundation\Model;
 
 /**
  * @Entity
