@@ -1,0 +1,11 @@
+doctrine:
+  dbal:
+    driver:   pdo_mysql
+    host:     '127.0.0.1'
+    port:     3306
+    chatset:  'UTF8'
+    dbname:   'tickets'
+    user:     'root'
+    password: '123456'
+    path:     '%model_path%'
+    devmode:  true
