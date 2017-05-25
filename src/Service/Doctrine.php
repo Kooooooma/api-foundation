@@ -4,13 +4,17 @@ namespace ApiFoundation\Service;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\Setup;
+use Symfony\Component\Yaml\Yaml;
 
 class Doctrine
 {
     private $entityManager = null;
 
-    public function __construct(Array $config)
+    public function __construct($configFile, $configKey)
     {
+        $config = Yaml::parse(file_get_contents(\CONF_DIR.'/'.$configFile))[$configKey]['dbal'];
+        $config['path'] = str_replace('%model_path%', \MODEL_DIR, $config['path']);
+
         $conf = Setup::createAnnotationMetadataConfiguration(array($config['path']), $config['devmode']);
         $conn = array();
 
@@ -25,5 +29,10 @@ class Doctrine
     public function getManager()
     {
         return $this->entityManager;
+    }
+
+    public function getRepository($class)
+    {
+        return $this->entityManager->getRepository('ApiFoundation\Model\\'.$class);
     }
 }

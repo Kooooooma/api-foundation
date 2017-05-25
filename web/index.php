@@ -15,7 +15,7 @@ define('MODEL_DIR', BASE_DIR.'/src/Model');
 require BASE_DIR.'/vendor/autoload.php';
 
 try {
-    $app = new \ApiFoundation\App();
+    $app = new \ApiFoundation\ApiFoundation();
     $app->run();
 } catch (Exception $e) {
     var_dump($e);

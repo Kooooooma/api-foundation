@@ -2,11 +2,9 @@
 
 namespace ApiFoundation;
 
-use ApiFoundation\Service\Doctrine;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Yaml\Yaml;
 
 
 class Controller
@@ -55,15 +53,6 @@ class Controller
 
     public function getDoctrine()
     {
-        static $doctrine = null;
-
-        if ( $doctrine == null ) {
-            $conf = Yaml::parse(file_get_contents(\CONF_DIR.'/config.yml'))['doctrine'];
-            $conf['dbal']['path'] = str_replace('%model_path%', \MODEL_DIR, $conf['dbal']['path']);
-
-            $doctrine = new Doctrine($conf['dbal']);
-        }
-
-        return $doctrine;
+        return ApiFoundation::$container->get('doctrine');
     }
 }

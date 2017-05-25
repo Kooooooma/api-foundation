@@ -4,15 +4,27 @@ namespace ApiFoundation\Model;
 
 /**
  * @Entity
+ * @Table(name="products")
  */
 class Product
 {
     /**
-     * @Id @Column(type="integer") @GeneratedValue
+     * @Id
+     * @Column(type="integer")
+     * @GeneratedValue
      */
     protected $id;
 
+    /**
+     * @Column(type="string")
+     */
     protected $name;
+
+    /**
+     * @ManyToOne(targetEntity="Category", inversedBy="products")
+     * @JoinColumn(name="category_id", referencedColumnName="id")
+     */
+    protected $category;
 
     public function getId()
     {
@@ -27,5 +39,10 @@ class Product
     public function setName($name)
     {
         $this->name = $name;
+    }
+
+    public function setCategory(Category $category)
+    {
+        $this->category = $category;
     }
 }

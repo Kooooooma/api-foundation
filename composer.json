@@ -5,6 +5,7 @@
     "require": {
         "symfony/routing": "~3.2",
         "symfony/http-foundation": "~3.2",
+        "symfony/dependency-injection": "~3.2",
         "symfony/config": "~3.2",
         "symfony/serializer": "~3.2",
         "psr/log": "~1.0",
