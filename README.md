@@ -8,6 +8,9 @@ location / {
     try_files $uri $uri/ /index.php?$query_string;
 }
 ```
+## 路由采用 Symfony/Routing 组件
+使用参考: https://packagist.org/packages/symfony/routing
+配置文件为: conf/routes.yml 
 
 ## Model层采用Doctrine 2 ORM
 使用请参考：http://symfony.com/doc/current/doctrine.html
