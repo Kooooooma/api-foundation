@@ -2,3 +2,5 @@ services:
   doctrine:
     class: ApiFoundation\Service\Doctrine
     arguments: ['config.yml', 'doctrine']
+  logger:
+    class: App\Service\AppLogger

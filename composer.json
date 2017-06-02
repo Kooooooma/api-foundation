@@ -10,11 +10,17 @@
         "symfony/serializer": "~3.2",
         "psr/log": "~1.0",
         "doctrine/orm": "~2.5",
-        "symfony/yaml": "~3.2"
+        "symfony/yaml": "~3.2",
+        "monolog/monolog": "~1.22",
+        "php-errors/php-errors": "~1.0"
+    },
+    "require-dev": {
+        "php-console/php-console": "~3.1"
     },
     "autoload": {
         "psr-4": {
-            "ApiFoundation\\": "src/"
+            "ApiFoundation\\": "src/",
+            "App\\": "src/App/"
         }
     },
     "repositories": {

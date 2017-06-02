@@ -2,6 +2,7 @@
 
 namespace ApiFoundation;
 
+use PHPErrors\PHPErrors;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\Matcher\UrlMatcher;
@@ -19,9 +20,26 @@ class ApiFoundation
 
     public function run()
     {
-        $locator = new FileLocator(CONF_DIR);
+        $locator = new FileLocator(CONF_PATH);
 
-        //1,路由
+        //启用错误处理
+        $errorHandler = PHPErrors::enable(E_ALL, defined('APP_DEBUG') ? APP_DEBUG : false);
+
+        //注册服务
+        self::$container = new ContainerBuilder();
+        $loader = new DIYamlFileLoader(self::$container, $locator);
+        $loader->load('services.yml');
+
+        //检测日志记录器,存在则设置
+        try {
+            if ( ($logger = self::$container->get('logger')) ) {
+                $errorHandler->setLogger($logger);
+            }
+        } catch (\Exception $e) {
+            // TODO: Do nothing
+        }
+
+        //路由
         $loader  = new RoutYamlFileLoader($locator);
         $routes  = $loader->load('routes.yml');
 
@@ -31,14 +49,9 @@ class ApiFoundation
         $parameters = $matcher->match($_SERVER['REQUEST_URI']);
         if ( empty($parameters) ) throw new ResourceNotFoundException();
 
-        //2,注册服务
-        self::$container = new ContainerBuilder();
-        $loader = new DIYamlFileLoader(self::$container, $locator);
-        $loader->load('services.yml');
-
-        //3,调用控制器
+        //调用控制器
         list($class, $action) = explode("::", $parameters['_controller']);
-        $class = __NAMESPACE__.'\\Controller\\'.$class;
+        $class = '\\'.APP_NAMESPACE.'\\Controller\\'.$class;
 
         $args = array();
         foreach ( $parameters as $key => $val ) {

@@ -8,15 +8,22 @@
  *
  */
 
-define('BASE_DIR', dirname(__DIR__));
-define('CONF_DIR', BASE_DIR.'/conf');
-define('MODEL_DIR', BASE_DIR.'/src/Model');
+define('ROOT_PATH',    dirname(__DIR__));
+define('CONF_PATH',    ROOT_PATH.'/conf');
+define('SRC_PATH',     ROOT_PATH.'/src');
+define('RUNTIME_PATH', ROOT_PATH.'/runtime');
 
-require BASE_DIR.'/vendor/autoload.php';
+/******* 用户自定义常量区 ********/
 
-try {
-    $app = new \ApiFoundation\ApiFoundation();
-    $app->run();
-} catch (Exception $e) {
-    var_dump($e);
-}
+define('APP_NAMESPACE', 'App'); //修改应用名称,需要修改对应的composer.json
+define('APP_PATH', SRC_PATH.'/'.APP_NAMESPACE);
+define('APP_DEBUG', true);
+
+/******* 用户自定义常量区 ********/
+
+define('MODEL_PATH', APP_PATH.'/Model');
+
+require ROOT_PATH.'/vendor/autoload.php';
+
+$app = new \ApiFoundation\ApiFoundation();
+$app->run();

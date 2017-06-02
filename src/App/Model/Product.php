@@ -1,6 +1,6 @@
 <?php
 
-namespace ApiFoundation\Model;
+namespace App\Model;
 
 /**
  * @Entity

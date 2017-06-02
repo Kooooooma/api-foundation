@@ -1,33 +1,33 @@
 <?php
 
-namespace ApiFoundation\Controller;
+namespace App\Controller;
 
 use ApiFoundation\Controller;
-use ApiFoundation\Model\Product;
-use ApiFoundation\Model\Category;
 
 class TicketController extends Controller
 {
     public function staffCreateTicket($id, $rid)
     {
         //0,测试DI
-        $this->getDoctrine();
+        $em = $this->getDoctrine()->getManager();
+        var_dump($em);
 
         //1,单表操作
 //        $this->singleTable();
 
         //2,关联表操作
-//        $this->relateTable();
+//        $this->relateOneToManyTable();
     }
 
-    public function relateTable()
+    public function relateOneToManyTable()
     {
         //分类不存在时插入
 //        $category = new Category();
 //        $category->setName("ship");
 
         //分类存在时插入
-        $categoryRepository = $this->getDoctrine()->getRepository('Category');
+//        $categoryRepository = $this->getDoctrine()->getRepository('Category');
+        $categoryRepository = null;
         $category = $categoryRepository->find(1);
 
         $product = new Product();

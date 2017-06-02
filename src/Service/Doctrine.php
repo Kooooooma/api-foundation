@@ -12,14 +12,18 @@ class Doctrine
 
     public function __construct($configFile, $configKey)
     {
-        $config = Yaml::parse(file_get_contents(\CONF_DIR.'/'.$configFile))[$configKey]['dbal'];
-        $config['path'] = str_replace('%model_path%', \MODEL_DIR, $config['path']);
+        $config  = Yaml::parse(file_get_contents(\CONF_PATH.'/'.$configFile))[$configKey]['dbal'];
+        $devMode = false;
 
-        $conf = Setup::createAnnotationMetadataConfiguration(array($config['path']), $config['devmode']);
+        if ( isset($config['devmode']) ) {
+            $devMode = $config['devmode'];
+            unset($config['devmode']);
+        }
+
+        $conf = Setup::createAnnotationMetadataConfiguration(array(MODEL_PATH), $devMode);
+
         $conn = array();
-
         foreach ( $config as $key => $val ) {
-            if ( in_array($key, array('path', 'devmode')) ) continue;
             $conn[$key] = $val;
         }
 
@@ -33,6 +37,6 @@ class Doctrine
 
     public function getRepository($class)
     {
-        return $this->entityManager->getRepository('ApiFoundation\Model\\'.$class);
+        return $this->entityManager->getRepository('\\'.APP_NAMESPACE.'\Model\\'.$class);
     }
 }
