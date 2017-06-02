@@ -1,7 +1,8 @@
 <?php
 
 /**
- * 环信工单 Restful API 项目
+ * Restful API Foundation
+ * Api 基础框架
  *
  * @author Koma <komazhang@foxmail.com>
  * @date 2017-05-19
