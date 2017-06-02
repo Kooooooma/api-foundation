@@ -9,7 +9,7 @@ location / {
 }
 ```
 ## 路由采用 Symfony/Routing 组件
-使用参考: https://packagist.org/packages/symfony/routing
+使用参考: https://packagist.org/packages/symfony/routing    
 配置文件为: conf/routes.yml 
 
 ## Model层采用Doctrine 2 ORM
