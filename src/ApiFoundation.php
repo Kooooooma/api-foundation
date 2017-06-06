@@ -41,8 +41,8 @@ class ApiFoundation
         }
 
         //路由
-        $loader  = new RoutYamlFileLoader($locator);
-        $routes  = $loader->load('routes.yml');
+        $loader = new RoutYamlFileLoader($locator);
+        $routes = $loader->load('routes.yml');
 
         $context = new RequestContext();
         $context->fromRequest(Request::createFromGlobals());
