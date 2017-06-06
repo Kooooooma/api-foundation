@@ -2,10 +2,14 @@
 # 注意：对于字符串应该使用单引号
 # path, host, schemes, methods, defaults, requirements
 #
-get-tickets:
-    path: /tickets/{id}/reply/{rid}
+post-tickets:
+    path: /tickets
     defaults: {_controller: 'TicketController::staffCreateTicket'}
-    requirements: {id: '\d+', rid: '\d+'}
-    methods: ['GET']
+    methods: ['POST']
 
+get-tickets:
+    path: /tickets/{id}
+    defaults: {_controller: 'TicketController::getTicketList'}
+    requirements: {id: '\d+'}
+    methods: ['GET']
 
