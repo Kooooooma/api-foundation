@@ -4,6 +4,7 @@ namespace ApiFoundation;
 
 use PHPErrors\PHPErrors;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\Matcher\UrlMatcher;
 use Symfony\Component\Routing\RequestContext;
@@ -43,7 +44,8 @@ class ApiFoundation
         $loader  = new RoutYamlFileLoader($locator);
         $routes  = $loader->load('routes.yml');
 
-        $context = new RequestContext('/');
+        $context = new RequestContext();
+        $context->fromRequest(Request::createFromGlobals());
         $matcher = new UrlMatcher($routes, $context);
 
         $parameters = $matcher->match($_SERVER['REQUEST_URI']);

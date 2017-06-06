@@ -2,6 +2,12 @@
     "name": "api-foundation/api-foundation",
     "description": "环信工单系统",
     "type": "project",
+    "authors": [
+        {
+            "name": "Koma",
+            "email": "komazhang@foxmail.com"
+        }
+    ],
     "require": {
         "symfony/routing": "~3.2",
         "symfony/http-foundation": "~3.2",
