@@ -18,11 +18,6 @@ class User
     protected $id;
 
     /**
-     * @OneToMany(targetEntity="Ticket", mappedBy="user")
-     */
-    protected $tickets;
-
-    /**
      * @Column(length=50)
      */
     protected $username;
@@ -66,11 +61,6 @@ class User
      * @Column(name="org_id", type="integer", nullable=true)
      */
     protected $orgId;
-
-    public function __construct()
-    {
-        $this->tickets = new ArrayCollection();
-    }
 
     /**
      * @return mixed

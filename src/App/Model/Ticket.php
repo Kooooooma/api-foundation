@@ -16,7 +16,7 @@ class Ticket
     protected $id;
 
     /**
-     * @ManyToOne(targetEntity="User", inversedBy="tickets")
+     * @ManyToOne(targetEntity="User")
      * @JoinColumn(name="user_id", referencedColumnName="id")
      */
     protected $user;
@@ -127,7 +127,7 @@ class Ticket
     protected $creatorType;
 
     /**
-     * @Column(type="string", length="500")
+     * @Column(type="string", length=500)
      */
     protected $subject;
 
@@ -137,6 +137,11 @@ class Ticket
     public function getId()
     {
         return $this->id;
+    }
+
+    public function setUser($user)
+    {
+        $this->user = $user;
     }
 
     /**
