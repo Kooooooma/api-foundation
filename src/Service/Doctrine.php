@@ -39,4 +39,9 @@ class Doctrine
     {
         return $this->entityManager->getRepository('\\'.APP_NAMESPACE.'\Model\\'.$class);
     }
+
+    public function find($class, $id)
+    {
+        return $this->entityManager->find('\\'.APP_NAMESPACE.'\Model\\'.$class, $id);
+    }
 }
