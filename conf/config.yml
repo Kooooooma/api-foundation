@@ -8,4 +8,4 @@ doctrine:
     user:     'root'
     password: '123456'
     path:     '%model_path%'
-    devmode:  true
+    devmode:  false

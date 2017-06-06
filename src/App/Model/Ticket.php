@@ -144,6 +144,11 @@ class Ticket
         $this->user = $user;
     }
 
+    public function getUser()
+    {
+        return $this->user;
+    }
+
     /**
      * @return mixed
      */
