@@ -4,7 +4,7 @@ namespace App\Model;
 
 /**
  * @Entity
- * @Table(name="em_ticket_thread")
+ * @Table(name="ticket_thread")
  */
 class Thread
 {

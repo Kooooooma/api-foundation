@@ -4,7 +4,7 @@ namespace App\Model;
 
 /**
  * @Entity
- * @Table(name="em_ticket")
+ * @Table(name="ticket")
  */
 class Ticket
 {

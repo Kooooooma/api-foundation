@@ -10,5 +10,8 @@ use Doctrine\Common\Util\Debug;
 
 class TicketController extends Controller
 {
-
+    public function staffCreateTicket()
+    {
+        
+    }
 }
