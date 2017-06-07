@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use ApiFoundation\Controller;
+use App\Model\Product;
 
 class TicketController extends Controller
 {
@@ -10,10 +11,10 @@ class TicketController extends Controller
     {
         //0,测试DI
         $em = $this->getDoctrine()->getManager();
-        var_dump($em);
+//        var_dump($em);
 
         //1,单表操作
-//        $this->singleTable();
+        $this->singleTable();
 
         //2,关联表操作
 //        $this->relateOneToManyTable();
@@ -52,12 +53,12 @@ class TicketController extends Controller
         //插入
         $product = new Product();
 
-//        $product->setName("p1");
-//
-//        $em->persist($product);
-//        $em->flush();
-//
-//        echo $product->getId();
+        $product->setName("p4");
+
+        $em->persist($product);
+        $em->flush();
+
+        echo $product->getId();
 
         //查询
 //        $products = $productRepository->findAll();
