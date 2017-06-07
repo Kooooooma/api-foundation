@@ -2,7 +2,10 @@
 
 namespace ApiFoundation\Service;
 
+use ApiFoundation\Listener\TablePrefix;
+use Doctrine\Common\EventManager;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Events;
 use Doctrine\ORM\Tools\Setup;
 use Symfony\Component\Yaml\Yaml;
 
@@ -20,6 +23,11 @@ class Doctrine
             unset($config['devmode']);
         }
 
+        if ( isset($config['prefix']) ) {
+            $prefix = $config['prefix'];
+            unset($config['prefix']);
+        }
+
         $conf = Setup::createAnnotationMetadataConfiguration(array(MODEL_PATH), $devMode);
 
         $conn = array();
@@ -27,7 +35,12 @@ class Doctrine
             $conn[$key] = $val;
         }
 
-        $this->entityManager = EntityManager::create($conn, $conf);
+        //set table prefix by event listener
+        $evm    = new EventManager();
+        $prefix = new TablePrefix($prefix);
+        $evm->addEventListener(Events::loadClassMetadata, $prefix);
+
+        $this->entityManager = EntityManager::create($conn, $conf, $evm);
     }
 
     public function getManager()
