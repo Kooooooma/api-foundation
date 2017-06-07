@@ -5,7 +5,7 @@ namespace App\Controller;
 use ApiFoundation\Controller;
 use App\Model\Product;
 
-class TicketController extends Controller
+class DefaultController extends Controller
 {
     public function staffCreateTicket($id, $rid)
     {
